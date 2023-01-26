@@ -14,4 +14,8 @@ I am guessing that I will then learn how to update the version on the server
 Yes, these are the three secret commands: 
 $ git add README.md
 $ git commit -m "updated readme" 
-$ git push 
+$ git push
+
+For the future: 
+username: pzit0
+password/ token for this class: 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  
