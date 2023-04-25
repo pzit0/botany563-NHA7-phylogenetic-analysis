@@ -1,0 +1,426 @@
+(base) pzito@IBIO-DRW7N0JQY0 src % brew reinstall gcc
+==> Fetching gcc
+==> Downloading https://ghcr.io/v2/homebrew/core/gcc/manifests/12.2.0-2
+Already downloaded: /Users/pzito/Library/Caches/Homebrew/downloads/a4a4a48db6f1c5ebc47c0929825c735a0c4837922713f6773cb4fbec928e5a8f--gcc-12.2.0-2.bottle_manifest.json
+==> Downloading https://ghcr.io/v2/homebrew/core/gcc/blobs/sha256:d0dd262f7d681d5bbcc39bea85d0dd355f2f9
+Already downloaded: /Users/pzito/Library/Caches/Homebrew/downloads/281dd355e2eee33d29d6506ddef91451058e1dfe1b48342ba99f07c63d4179bb--gcc--12.2.0.arm64_ventura.bottle.2.tar.gz
+==> Reinstalling gcc 
+==> Pouring gcc--12.2.0.arm64_ventura.bottle.2.tar.gz
+🍺  /opt/homebrew/Cellar/gcc/12.2.0: 1,470 files, 358.8MB
+==> Running `brew cleanup gcc`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+(base) pzito@IBIO-DRW7N0JQY0 src % brew doctor 
+Your system is ready to brew.
+(base) pzito@IBIO-DRW7N0JQY0 src % ls
+Alias.C		Quartets.h	TaxonSet.C	bucky.C		mbsumtree.C
+Alias.h		Rand.h		TaxonSet.h	bucky.h		mbsumtree.h
+Alias.o		TGM.C		TaxonSet.o	makefile	mbsumtree.o
+Quartets.C	TGM.h		boost		mbsum.C
+(base) pzito@IBIO-DRW7N0JQY0 src % make
+g++ -O3 -I. -o TGM.o -c TGM.C
+In file included from TGM.C:12:
+In file included from ./boost/unordered_map.hpp:16:
+In file included from ./boost/unordered/unordered_map.hpp:17:
+In file included from ./boost/unordered/detail/equivalent.hpp:14:
+In file included from ./boost/unordered/detail/table.hpp:10:
+In file included from ./boost/unordered/detail/buckets.hpp:15:
+./boost/unordered/detail/allocate.hpp:911:45: error: no template named 'tuple' in namespace 'std'; did you mean simply 'tuple'?
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+                                            ^~~~~
+./boost/unordered/detail/allocate.hpp:853:47: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+    void construct_from_tuple(Alloc&, T* ptr, namespace_ tuple<>)           \
+                                              ^~~~~~~~~~
+./boost/tuple/tuple.hpp:39:15: note: 'tuple' declared here
+using tuples::tuple;
+              ^
+In file included from TGM.C:12:
+In file included from ./boost/unordered_map.hpp:16:
+In file included from ./boost/unordered/unordered_map.hpp:17:
+In file included from ./boost/unordered/detail/equivalent.hpp:14:
+In file included from ./boost/unordered/detail/table.hpp:10:
+In file included from ./boost/unordered/detail/buckets.hpp:15:
+./boost/unordered/detail/allocate.hpp:911:4: error: redefinition of 'construct_from_tuple'
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+   ^
+./boost/unordered/detail/allocate.hpp:853:10: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+    void construct_from_tuple(Alloc&, T* ptr, namespace_ tuple<>)           \
+         ^
+./boost/unordered/detail/allocate.hpp:908:1: note: previous definition is here
+BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, boost::)
+^
+./boost/unordered/detail/allocate.hpp:853:10: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+    void construct_from_tuple(Alloc&, T* ptr, namespace_ tuple<>)           \
+         ^
+./boost/unordered/detail/allocate.hpp:911:45: error: no template named 'tuple' in namespace 'std'; did you mean simply 'tuple'?
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+                                            ^~~~~
+./boost/unordered/detail/allocate.hpp:859:52: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+                                                   ^~~~~~~~~~
+./boost/preprocessor/repetition/repeat_from_to.hpp:36:128: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_1'
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+                                                                                                                               ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:54:139: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_D_1'
+#    define BOOST_PP_REPEAT_FROM_TO_D_1(d, f, l, m, dt) BOOST_PP_REPEAT_1(BOOST_PP_SUB_D(d, l, f), BOOST_PP_REPEAT_FROM_TO_M_1, (d, f, m, dt))
+                                                                                                                                          ^~
+note: (skipping 14 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+./boost/preprocessor/repetition/repeat_from_to.hpp:79:121: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_I'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_I(z, n, d, f, m, dt) BOOST_PP_REPEAT_FROM_TO_M_1_II(z, BOOST_PP_ADD_D(d, n, f), m, dt)
+                                                                                                                        ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:83:62: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_II'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_II(z, n, m, dt) m(z, n, dt)
+                                                             ^~
+./boost/unordered/detail/allocate.hpp:865:13: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL'
+            namespace_ tuple<BOOST_PP_ENUM_PARAMS_Z(z, n, A)> const& x)     \
+            ^~~~~~~~~~
+./boost/tuple/tuple.hpp:39:15: note: 'tuple' declared here
+using tuples::tuple;
+              ^
+In file included from TGM.C:12:
+In file included from ./boost/unordered_map.hpp:16:
+In file included from ./boost/unordered/unordered_map.hpp:17:
+In file included from ./boost/unordered/detail/equivalent.hpp:14:
+In file included from ./boost/unordered/detail/table.hpp:10:
+In file included from ./boost/unordered/detail/buckets.hpp:15:
+./boost/unordered/detail/allocate.hpp:911:4: error: redefinition of 'construct_from_tuple'
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+   ^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:908:1: note: previous definition is here
+BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, boost::)
+^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:911:45: error: no template named 'tuple' in namespace 'std'; did you mean simply 'tuple'?
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+                                            ^~~~~
+./boost/unordered/detail/allocate.hpp:859:52: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+                                                   ^~~~~~~~~~
+./boost/preprocessor/repetition/repeat_from_to.hpp:36:128: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_1'
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+                                                                                                                               ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:54:139: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_D_1'
+#    define BOOST_PP_REPEAT_FROM_TO_D_1(d, f, l, m, dt) BOOST_PP_REPEAT_1(BOOST_PP_SUB_D(d, l, f), BOOST_PP_REPEAT_FROM_TO_M_1, (d, f, m, dt))
+                                                                                                                                          ^~
+note: (skipping 13 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+./boost/preprocessor/repetition/repeat_from_to.hpp:79:121: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_I'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_I(z, n, d, f, m, dt) BOOST_PP_REPEAT_FROM_TO_M_1_II(z, BOOST_PP_ADD_D(d, n, f), m, dt)
+                                                                                                                        ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:83:62: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_II'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_II(z, n, m, dt) m(z, n, dt)
+                                                             ^~
+./boost/unordered/detail/allocate.hpp:865:13: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL'
+            namespace_ tuple<BOOST_PP_ENUM_PARAMS_Z(z, n, A)> const& x)     \
+            ^~~~~~~~~~
+./boost/tuple/tuple.hpp:39:15: note: 'tuple' declared here
+using tuples::tuple;
+              ^
+In file included from TGM.C:12:
+In file included from ./boost/unordered_map.hpp:16:
+In file included from ./boost/unordered/unordered_map.hpp:17:
+In file included from ./boost/unordered/detail/equivalent.hpp:14:
+In file included from ./boost/unordered/detail/table.hpp:10:
+In file included from ./boost/unordered/detail/buckets.hpp:15:
+./boost/unordered/detail/allocate.hpp:911:4: error: redefinition of 'construct_from_tuple'
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+   ^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:908:1: note: previous definition is here
+BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, boost::)
+^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:911:45: error: no template named 'tuple' in namespace 'std'; did you mean simply 'tuple'?
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+                                            ^~~~~
+./boost/unordered/detail/allocate.hpp:859:52: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+                                                   ^~~~~~~~~~
+./boost/preprocessor/repetition/repeat_from_to.hpp:36:128: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_1'
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+                                                                                                                               ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:54:139: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_D_1'
+#    define BOOST_PP_REPEAT_FROM_TO_D_1(d, f, l, m, dt) BOOST_PP_REPEAT_1(BOOST_PP_SUB_D(d, l, f), BOOST_PP_REPEAT_FROM_TO_M_1, (d, f, m, dt))
+                                                                                                                                          ^~
+note: (skipping 12 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+./boost/preprocessor/repetition/repeat_from_to.hpp:79:121: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_I'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_I(z, n, d, f, m, dt) BOOST_PP_REPEAT_FROM_TO_M_1_II(z, BOOST_PP_ADD_D(d, n, f), m, dt)
+                                                                                                                        ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:83:62: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_II'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_II(z, n, m, dt) m(z, n, dt)
+                                                             ^~
+./boost/unordered/detail/allocate.hpp:865:13: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL'
+            namespace_ tuple<BOOST_PP_ENUM_PARAMS_Z(z, n, A)> const& x)     \
+            ^~~~~~~~~~
+./boost/tuple/tuple.hpp:39:15: note: 'tuple' declared here
+using tuples::tuple;
+              ^
+In file included from TGM.C:12:
+In file included from ./boost/unordered_map.hpp:16:
+In file included from ./boost/unordered/unordered_map.hpp:17:
+In file included from ./boost/unordered/detail/equivalent.hpp:14:
+In file included from ./boost/unordered/detail/table.hpp:10:
+In file included from ./boost/unordered/detail/buckets.hpp:15:
+./boost/unordered/detail/allocate.hpp:911:4: error: redefinition of 'construct_from_tuple'
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+   ^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:908:1: note: previous definition is here
+BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, boost::)
+^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:911:45: error: no template named 'tuple' in namespace 'std'; did you mean simply 'tuple'?
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+                                            ^~~~~
+./boost/unordered/detail/allocate.hpp:859:52: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+                                                   ^~~~~~~~~~
+./boost/preprocessor/repetition/repeat_from_to.hpp:36:128: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_1'
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+                                                                                                                               ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:54:139: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_D_1'
+#    define BOOST_PP_REPEAT_FROM_TO_D_1(d, f, l, m, dt) BOOST_PP_REPEAT_1(BOOST_PP_SUB_D(d, l, f), BOOST_PP_REPEAT_FROM_TO_M_1, (d, f, m, dt))
+                                                                                                                                          ^~
+note: (skipping 11 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+./boost/preprocessor/repetition/repeat_from_to.hpp:79:121: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_I'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_I(z, n, d, f, m, dt) BOOST_PP_REPEAT_FROM_TO_M_1_II(z, BOOST_PP_ADD_D(d, n, f), m, dt)
+                                                                                                                        ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:83:62: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_II'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_II(z, n, m, dt) m(z, n, dt)
+                                                             ^~
+./boost/unordered/detail/allocate.hpp:865:13: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL'
+            namespace_ tuple<BOOST_PP_ENUM_PARAMS_Z(z, n, A)> const& x)     \
+            ^~~~~~~~~~
+./boost/tuple/tuple.hpp:39:15: note: 'tuple' declared here
+using tuples::tuple;
+              ^
+In file included from TGM.C:12:
+In file included from ./boost/unordered_map.hpp:16:
+In file included from ./boost/unordered/unordered_map.hpp:17:
+In file included from ./boost/unordered/detail/equivalent.hpp:14:
+In file included from ./boost/unordered/detail/table.hpp:10:
+In file included from ./boost/unordered/detail/buckets.hpp:15:
+./boost/unordered/detail/allocate.hpp:911:4: error: redefinition of 'construct_from_tuple'
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+   ^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:908:1: note: previous definition is here
+BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, boost::)
+^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:911:45: error: no template named 'tuple' in namespace 'std'; did you mean simply 'tuple'?
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+                                            ^~~~~
+./boost/unordered/detail/allocate.hpp:859:52: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+                                                   ^~~~~~~~~~
+./boost/preprocessor/repetition/repeat_from_to.hpp:36:128: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_1'
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+                                                                                                                               ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:54:139: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_D_1'
+#    define BOOST_PP_REPEAT_FROM_TO_D_1(d, f, l, m, dt) BOOST_PP_REPEAT_1(BOOST_PP_SUB_D(d, l, f), BOOST_PP_REPEAT_FROM_TO_M_1, (d, f, m, dt))
+                                                                                                                                          ^~
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+./boost/preprocessor/repetition/repeat_from_to.hpp:79:121: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_I'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_I(z, n, d, f, m, dt) BOOST_PP_REPEAT_FROM_TO_M_1_II(z, BOOST_PP_ADD_D(d, n, f), m, dt)
+                                                                                                                        ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:83:62: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_II'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_II(z, n, m, dt) m(z, n, dt)
+                                                             ^~
+./boost/unordered/detail/allocate.hpp:865:13: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL'
+            namespace_ tuple<BOOST_PP_ENUM_PARAMS_Z(z, n, A)> const& x)     \
+            ^~~~~~~~~~
+./boost/tuple/tuple.hpp:39:15: note: 'tuple' declared here
+using tuples::tuple;
+              ^
+In file included from TGM.C:12:
+In file included from ./boost/unordered_map.hpp:16:
+In file included from ./boost/unordered/unordered_map.hpp:17:
+In file included from ./boost/unordered/detail/equivalent.hpp:14:
+In file included from ./boost/unordered/detail/table.hpp:10:
+In file included from ./boost/unordered/detail/buckets.hpp:15:
+./boost/unordered/detail/allocate.hpp:911:4: error: redefinition of 'construct_from_tuple'
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+   ^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:908:1: note: previous definition is here
+BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, boost::)
+^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:911:45: error: no template named 'tuple' in namespace 'std'; did you mean simply 'tuple'?
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+                                            ^~~~~
+./boost/unordered/detail/allocate.hpp:859:52: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+                                                   ^~~~~~~~~~
+./boost/preprocessor/repetition/repeat_from_to.hpp:36:128: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_1'
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+                                                                                                                               ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:54:139: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_D_1'
+#    define BOOST_PP_REPEAT_FROM_TO_D_1(d, f, l, m, dt) BOOST_PP_REPEAT_1(BOOST_PP_SUB_D(d, l, f), BOOST_PP_REPEAT_FROM_TO_M_1, (d, f, m, dt))
+                                                                                                                                          ^~
+note: (skipping 9 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+./boost/preprocessor/repetition/repeat_from_to.hpp:79:121: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_I'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_I(z, n, d, f, m, dt) BOOST_PP_REPEAT_FROM_TO_M_1_II(z, BOOST_PP_ADD_D(d, n, f), m, dt)
+                                                                                                                        ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:83:62: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_II'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_II(z, n, m, dt) m(z, n, dt)
+                                                             ^~
+./boost/unordered/detail/allocate.hpp:865:13: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL'
+            namespace_ tuple<BOOST_PP_ENUM_PARAMS_Z(z, n, A)> const& x)     \
+            ^~~~~~~~~~
+./boost/tuple/tuple.hpp:39:15: note: 'tuple' declared here
+using tuples::tuple;
+              ^
+In file included from TGM.C:12:
+In file included from ./boost/unordered_map.hpp:16:
+In file included from ./boost/unordered/unordered_map.hpp:17:
+In file included from ./boost/unordered/detail/equivalent.hpp:14:
+In file included from ./boost/unordered/detail/table.hpp:10:
+In file included from ./boost/unordered/detail/buckets.hpp:15:
+./boost/unordered/detail/allocate.hpp:911:4: error: redefinition of 'construct_from_tuple'
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+   ^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:908:1: note: previous definition is here
+BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, boost::)
+^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:911:45: error: no template named 'tuple' in namespace 'std'; did you mean simply 'tuple'?
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+                                            ^~~~~
+./boost/unordered/detail/allocate.hpp:859:52: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+                                                   ^~~~~~~~~~
+./boost/preprocessor/repetition/repeat_from_to.hpp:36:128: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_1'
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+                                                                                                                               ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:54:139: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_D_1'
+#    define BOOST_PP_REPEAT_FROM_TO_D_1(d, f, l, m, dt) BOOST_PP_REPEAT_1(BOOST_PP_SUB_D(d, l, f), BOOST_PP_REPEAT_FROM_TO_M_1, (d, f, m, dt))
+                                                                                                                                          ^~
+note: (skipping 8 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+./boost/preprocessor/repetition/repeat_from_to.hpp:79:121: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_I'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_I(z, n, d, f, m, dt) BOOST_PP_REPEAT_FROM_TO_M_1_II(z, BOOST_PP_ADD_D(d, n, f), m, dt)
+                                                                                                                        ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:83:62: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_II'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_II(z, n, m, dt) m(z, n, dt)
+                                                             ^~
+./boost/unordered/detail/allocate.hpp:865:13: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL'
+            namespace_ tuple<BOOST_PP_ENUM_PARAMS_Z(z, n, A)> const& x)     \
+            ^~~~~~~~~~
+./boost/tuple/tuple.hpp:39:15: note: 'tuple' declared here
+using tuples::tuple;
+              ^
+In file included from TGM.C:12:
+In file included from ./boost/unordered_map.hpp:16:
+In file included from ./boost/unordered/unordered_map.hpp:17:
+In file included from ./boost/unordered/detail/equivalent.hpp:14:
+In file included from ./boost/unordered/detail/table.hpp:10:
+In file included from ./boost/unordered/detail/buckets.hpp:15:
+./boost/unordered/detail/allocate.hpp:911:4: error: redefinition of 'construct_from_tuple'
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+   ^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:908:1: note: previous definition is here
+BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, boost::)
+^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:911:45: error: no template named 'tuple' in namespace 'std'; did you mean simply 'tuple'?
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+                                            ^~~~~
+./boost/unordered/detail/allocate.hpp:859:52: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+                                                   ^~~~~~~~~~
+./boost/preprocessor/repetition/repeat_from_to.hpp:36:128: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_1'
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+                                                                                                                               ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:54:139: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_D_1'
+#    define BOOST_PP_REPEAT_FROM_TO_D_1(d, f, l, m, dt) BOOST_PP_REPEAT_1(BOOST_PP_SUB_D(d, l, f), BOOST_PP_REPEAT_FROM_TO_M_1, (d, f, m, dt))
+                                                                                                                                          ^~
+note: (skipping 7 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+./boost/preprocessor/repetition/repeat_from_to.hpp:79:121: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_I'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_I(z, n, d, f, m, dt) BOOST_PP_REPEAT_FROM_TO_M_1_II(z, BOOST_PP_ADD_D(d, n, f), m, dt)
+                                                                                                                        ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:83:62: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_II'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_II(z, n, m, dt) m(z, n, dt)
+                                                             ^~
+./boost/unordered/detail/allocate.hpp:865:13: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL'
+            namespace_ tuple<BOOST_PP_ENUM_PARAMS_Z(z, n, A)> const& x)     \
+            ^~~~~~~~~~
+./boost/tuple/tuple.hpp:39:15: note: 'tuple' declared here
+using tuples::tuple;
+              ^
+In file included from TGM.C:12:
+In file included from ./boost/unordered_map.hpp:16:
+In file included from ./boost/unordered/unordered_map.hpp:17:
+In file included from ./boost/unordered/detail/equivalent.hpp:14:
+In file included from ./boost/unordered/detail/table.hpp:10:
+In file included from ./boost/unordered/detail/buckets.hpp:15:
+./boost/unordered/detail/allocate.hpp:911:4: error: redefinition of 'construct_from_tuple'
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+   ^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:908:1: note: previous definition is here
+BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, boost::)
+^
+./boost/unordered/detail/allocate.hpp:859:9: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+        ^
+./boost/unordered/detail/allocate.hpp:911:45: error: no template named 'tuple' in namespace 'std'; did you mean simply 'tuple'?
+   BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE(10, std::)
+                                            ^~~~~
+./boost/unordered/detail/allocate.hpp:859:52: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE'
+        BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL, namespace_)
+                                                   ^~~~~~~~~~
+./boost/preprocessor/repetition/repeat_from_to.hpp:36:128: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_1'
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+                                                                                                                               ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:54:139: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_D_1'
+#    define BOOST_PP_REPEAT_FROM_TO_D_1(d, f, l, m, dt) BOOST_PP_REPEAT_1(BOOST_PP_SUB_D(d, l, f), BOOST_PP_REPEAT_FROM_TO_M_1, (d, f, m, dt))
+                                                                                                                                          ^~
+note: (skipping 6 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+./boost/preprocessor/repetition/repeat_from_to.hpp:79:121: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_I'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_I(z, n, d, f, m, dt) BOOST_PP_REPEAT_FROM_TO_M_1_II(z, BOOST_PP_ADD_D(d, n, f), m, dt)
+                                                                                                                        ^~
+./boost/preprocessor/repetition/repeat_from_to.hpp:83:62: note: expanded from macro 'BOOST_PP_REPEAT_FROM_TO_M_1_II'
+# define BOOST_PP_REPEAT_FROM_TO_M_1_II(z, n, m, dt) m(z, n, dt)
+                                                             ^~
+./boost/unordered/detail/allocate.hpp:865:13: note: expanded from macro 'BOOST_UNORDERED_CONSTRUCT_FROM_TUPLE_IMPL'
+            namespace_ tuple<BOOST_PP_ENUM_PARAMS_Z(z, n, A)> const& x)     \
+            ^~~~~~~~~~
+./boost/tuple/tuple.hpp:39:15: note: 'tuple' declared here
+using tuples::tuple;
+              ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [TGM.o] Error 1
